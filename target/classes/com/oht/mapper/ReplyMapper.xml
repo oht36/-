@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.oht.mapper.ReplyMapper">
+
+<select id="list" resultType = "com.oht.domain.ReplyVO">
+
+select * from tbl_reply where bno = #{bno} order by rno asc 
+
+</select>
+
+<insert id="insert" >
+
+insert into tbl_reply (bno, reply, replyer) values (#{bno},#{reply},#{replyer})
+
+</insert>
+
+<delete id="delete">
+
+delete from tbl_reply where rno = #{rno}
+
+</delete>
+
+<update id="modify">
+
+update tbl_reply set reply = #{reply}, updatedate = now() where rno = #{rno}
+
+</update>
+
+<select id="getRnoCount">
+
+select count(*) from tbl_reply where bno = #{bno}
+
+</select>
+
+
+</mapper>
